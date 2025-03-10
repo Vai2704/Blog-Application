@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Post</title>
+	<link rel="stylesheet" th:href="@{/css/blog-styles.css}">
+  <style>
+    body {
+    font-family: sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f9f9f9; /* Light background */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid black; /* Thin black border */
+    padding-bottom: 10px;
+}
+
+form {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid black; /* Thin black border */
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"], textarea {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid black; /* Thin black border */
+    border-radius: 3px;
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+textarea {
+    height: 200px;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+button.create-button {
+    background-color: #e0e0e0; /* Light gray background */
+    color: black;
+    padding: 10px 15px;
+    border: 1px solid black; /* Thin black border */
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button.create-button:hover {
+    background-color: #d0d0d0; /* Darker gray on hover */
+}
+
+a.back-button {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black; /* Thin black border */
+    padding: 10px;
+    width: 150px;
+    margin: 20px auto;
+}
+
+a.back-button:hover {
+    background-color: #f0f0f0; /* Light gray on hover */
+}
+
+.auth-buttons {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.auth-buttons a, .auth-buttons button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    border: 1px solid black; /* Thin black border */
+    border-radius: 3px;
+    text-decoration: none;
+    color: black;
+    background-color: #e0e0e0; /* Light gray background */
+    cursor: pointer;
+}
+
+.auth-buttons a:hover, .auth-buttons button:hover {
+    background-color: #d0d0d0; /* Darker gray on hover */
+}
+  </style>
+</head>
+<body>
+	<%# <div class="auth-buttons">
+			        <a href="/login" class="login-button">Login</a>
+			    </div>
+			</div> %>
+
+    <h1> Create New Post </h1>
+
+<%= form_with(model: @post, url: posts_path, method: :post) do |form| %>
+  <div>
+    <label>Title:</label>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <label>Content:</label>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Post" %>
+  </div>
+<% end %> 
+
+
+    <a href="/" class="back-button">← Back to Posts</a> 
+</body>
+</html>
