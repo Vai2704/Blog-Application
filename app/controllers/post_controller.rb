@@ -15,12 +15,12 @@ class PostController < ApplicationController
       render :new
     end
   end
+ 
+  # def view
+  # end
 
-  def view
-  end
-
-  def edit
-  end
+  # def edit
+  # end
 
   def update
     if @post.update(post_params)
@@ -44,7 +44,7 @@ class PostController < ApplicationController
     redirect_to root_path, alert: "Post not found."
   end
 
-  def post_params
+  private def post_params
     params.require(:post).permit(:title, :content)
   end
 end
