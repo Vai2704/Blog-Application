@@ -1,12 +1,116 @@
-<H1> Blog Application </H1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Dashboard</title>
+    <style>
+        /* Styling for the posts dashboard */
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
 
-<a href = "newpost"> Create new post</a>
-<%  @post.live.each do |post|%>
-<div>
-    <a href = "post/<%= post.id%>"> 
-    <h2><%= post.title%></h2>
-    </a>
-    <p><%= post.content%> </p>
-    <hr>
+        .dashboard-container {
+            width: 70%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        /* Blog Title */
+        .dashboard-container h1 {
+            text-align: center;
+            border-bottom: 2px solid black;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* New Post Button */
+        .create-post-btn {
+            display: block;
+            width: 200px;
+            margin: 0 auto 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Individual Post Styling */
+        .post-container {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .post-container h2 {
+            font-size: 22px;
+            color: black;
+            margin: 0;
+        }
+
+        .post-container h2 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .post-container h2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Post Content */
+        .post-content {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        /* Pagination Styling */
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: black;
+            border: 1px solid black;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .pagination a:hover {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <h1>Blog Application</h1>
+
+        <a href="newpost" class="create-post-btn">Create New Post</a>
+
+        <% @post.live.each do |post| %>
+            <div class="post-container">
+                <a href="post/<%= post.id %>">
+                    <h2><%= post.title %></h2>
+                </a>
+                <p class="post-content"><%= post.content %></p>
+            </div>
+        <% end %>
+
+        <div class="pagination">
+            <%= paginate @post %>
+        </div>
     </div>
-<% end%>
+
+</body>
+</html>

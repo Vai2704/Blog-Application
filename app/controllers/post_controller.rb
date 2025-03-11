@@ -1,5 +1,4 @@
 class PostController < ApplicationController
-  # before_action :set_post
 
   def new
     @post = Post.new
@@ -15,7 +14,7 @@ class PostController < ApplicationController
       render :new
     end
   end
-
+ 
   def view
     @post = Post.find(params[:id])
   end
