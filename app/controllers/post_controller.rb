@@ -1,5 +1,4 @@
 class PostController < ApplicationController
-  # before_action :set_post
 
   def new
     @post = Post.new
@@ -15,7 +14,7 @@ class PostController < ApplicationController
       render :new
     end
   end
-
+ 
   def view
     @post = Post.find(params[:id])
   end
@@ -40,14 +39,6 @@ class PostController < ApplicationController
     @post.destroy
     redirect_to root_path, notice: 'Post deleted successfully!'
   end
-
-  private
-
-  # def set_post
-  #   @post = Post.find(params[:id])
-  # rescue ActiveRecord::RecordNotFound
-  #   redirect_to root_path, alert: "Post not found."
-  # end
 
   private def post_params
     params.require(:post).permit(:title, :content)

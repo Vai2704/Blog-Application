@@ -1,13 +1,15 @@
-<h3> Comment form </h3>
+<h3>Leave a Comment</h3>
 
-<%= form_with(model: [@post, Comment.new], url: post_comments_path(@post), method: :post) do |form|%>
-    <p>
-        <%= form.label :username%><br>
-        <%= form.text_field(:username)%>
-    </p>
-    <p>
-        <%= form.label :content%><br>
-        <%= form.text_field(:content)%>
-    </p>
-    <%= form.submit "Make a comment"%>
-<%end%>
+<div class="comment-form">
+    <%= form_with(model: [@post, Comment.new], url: post_comments_path(@post), method: :post) do |form| %>
+        <p>
+            <%= form.label :username %><br>
+            <%= form.text_field(:username) %>
+        </p>
+        <p>
+            <%= form.label :content %><br>
+            <%= form.text_field(:content) %>
+        </p>
+        <%= form.submit "Make a Comment" %>
+    <% end %>
+</div>
