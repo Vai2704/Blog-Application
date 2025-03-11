@@ -98,7 +98,7 @@
 
         <a href="newpost" class="create-post-btn">Create New Post</a>
 
-        <% @post.each do |post| %>
+        <% @post.live.each do |post| %>
             <div class="post-container">
                 <a href="post/<%= post.id %>">
                     <h2><%= post.title %></h2>
