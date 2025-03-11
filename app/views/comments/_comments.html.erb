@@ -1,7 +1,9 @@
-<h3> Comments</h3>
+<h3>Comments</h3>
 
-<% @post.comments.each do |comment|%>
-    <div>
-        <p><strong><%= comment.username%></strong> : <%= comment.content%></p>
-    </div>
-<%end%>
+<div class="comments-container">
+    <% @post.comments.each do |comment| %>
+        <div class="comment">
+            <p><strong><%= comment.username %></strong>: <%= comment.content %></p>
+        </div>
+    <% end %>
+</div>
