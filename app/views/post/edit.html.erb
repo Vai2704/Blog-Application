@@ -80,8 +80,8 @@
 
     <h1>Edit Post</h1>
 
-    <form action="<%= post_path(@post) %>" method="post">
-        <input type="hidden" name="_method" value="patch">
+    <form action="<%= post_path(@post) %>" method="patch">
+        <%# <input type="hidden" name="_method" value="patch"> %>
         
         <label>Title:</label>
         <input type="text" name="post[title]" value="<%= @post.title %>" required>

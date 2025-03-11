@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   get 'newpost', to: 'post#new'
   post 'posts', to: 'post#create'
-  get 'post/:id', to: 'post#view', as: 'post'
+  get 'post/:id', to: 'post#view'
   get 'post/:id/edit', to: 'post#edit', as: 'edit_post'
-  patch 'post/:id', to: 'post#update'
+  patch 'post/:id', to: 'post#update', as: 'post'
   delete 'post/:id', to: 'post#destroy'
+
+  post 'post/:post_id/comments', to: 'comments#create', as: 'post_comments'
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
