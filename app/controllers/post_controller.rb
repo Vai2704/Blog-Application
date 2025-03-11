@@ -37,17 +37,13 @@ class PostController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to root_path, notice: 'Post deleted successfully!'
+    if @post.update(status: false)
+      redirect_to root_path(@post), notice: "Post deleted successfully!"
+    else
+      redirect_to post_path(@post), alert: "Post not deleted!!"
+    end
+    
   end
-
-  private
-
-  # def set_post
-  #   @post = Post.find(params[:id])
-  # rescue ActiveRecord::RecordNotFound
-  #   redirect_to root_path, alert: "Post not found."
-  # end
 
   private def post_params
     params.require(:post).permit(:title, :content)
