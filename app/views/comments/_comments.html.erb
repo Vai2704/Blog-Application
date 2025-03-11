@@ -4,7 +4,7 @@
     <% @post.comments.live.each do |comment| %>
         <div class="comment">
             <p><strong><%= comment.username %></strong>: <%= comment.content %></p>
+            <%= link_to "Delete", delete_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
         </div>
     <% end %>
-        <%= link_to "Delete", delete_comment_path(@post, comment), method: :get, data: { confirm: "Are you sure?" } %>
 </div>

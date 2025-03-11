@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def index
-    @post = Post.page(params[:page]).per(1)
+    @post = Post.where(status: true).page(params[:page]).per(2)
     render 'dashboard'
   end
 end
