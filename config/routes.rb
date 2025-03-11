@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete 'post/:id', to: 'post#destroy'
 
   post 'post/:post_id/comments', to: 'comments#create', as: 'post_comments'
-  get 'post/:post_id/comments/:id', to: 'comments#destroy', as: 'delete_comment'
+  delete 'post/:post_id/comments/:id', to: 'comments#destroy', as: 'delete_comment'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
