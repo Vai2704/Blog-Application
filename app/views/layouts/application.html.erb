@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= content_for(:title) || "Blog Application" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -10,14 +10,19 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <%# Enable PWA manifest %>
+    <%= tag.link rel: "manifest", href: "/manifest.json" %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= asset_path('blog-icon.png') %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= asset_path('blog-icon.png') %>">
+    <link rel="icon" type="image/png" sizes="48x48" href="<%= asset_path('blog-icon.png') %>">
+    <link rel="icon" type="image/png" sizes="500x500" href="<%= asset_path('blog-icon.png') %>">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="500x500" href="<%= asset_path('blog-icon.png') %>">
+
+    <%# Styles and JS %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
