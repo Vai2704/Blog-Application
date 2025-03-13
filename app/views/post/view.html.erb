@@ -142,16 +142,12 @@
     </div>
 
     <div class="buttons">
-        
-        <a href="<%= edit_post_path(@post) %>" class="edit-button">Edit</a>
-        
-        <form action="<%= post_path(@post) %>" method="delete" style="display:inline;">
-            <input type="hidden" name="_method" >
-            <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this post?');">
-                Delete
-            </button>
-        </form>
-    </div>
+    <%= link_to "Edit", edit_post_path(@post), class: "edit-button" %>
+
+    <%= button_to "Delete", post_path(@post), method: :delete, 
+        data: { confirm: "Are you sure you want to delete this post?" }, 
+        class: "delete-button" %>
+</div>
 
     <a href="/" class="back-button">← Back to Posts</a>
     <hr>

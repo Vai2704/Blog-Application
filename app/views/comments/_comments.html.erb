@@ -3,7 +3,7 @@
 <div class="comments-container">
    <% @post.comments.live.each do |comment| %>
     <div class="comment">
-        <p><strong><%= comment.username %></strong>: <%= comment.content %></p>
+        <p><strong><%= comment.user.username %></strong>: <%= comment.content %></p>
         <%= button_to "Delete", delete_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
 <% end %>
