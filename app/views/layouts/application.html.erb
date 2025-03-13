@@ -28,6 +28,12 @@
   </head>
 
   <body>
+
+    <% if logged_in? %>
+  <p>Welcome, <%= current_user.email %> | <%= link_to 'Logout', logout_path, method: :delete %></p>
+<% else %>
+  <p><%= link_to 'Login', login_path %> | <%= link_to 'Sign Up', signup_path %></p>
+<% end %>
     <%= yield %>
   </body>
 </html>

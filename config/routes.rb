@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # authentication and authorization 
+  get 'signup', to: 'users#new', as: 'signup'   # Show signup form
+  post 'signup', to: 'users#create'             # Handle user registration
+  
+  get 'login', to: 'sessions#new', as: 'login'  # Show login form
+  post 'login', to: 'sessions#create'           # Handle login
+  get 'logout', to: 'sessions#destroy', as: 'logout' # Handle logout
+
   get 'newpost', to: 'post#new'
   post 'posts', to: 'post#create'
   get 'post/:id', to: 'post#view'

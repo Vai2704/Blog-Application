@@ -1,9 +1,16 @@
 class CommentsController < ApplicationController
+  before_action :require_login, only: [:create]
 
   def create 
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params.merge(status: true))
-    redirect_to post_path(@post)
+    @comment.user = current_user
+
+    if @comment.save()
+      redirect_to post_path(@post), notice: "Comment saved!"
+    else
+      redirect_to post_path(@post), alert: "comment not created!"
+    end
   end
 
   def destroy
@@ -19,6 +26,6 @@ class CommentsController < ApplicationController
   end
 
   private def comment_params
-    params.require(:comment).permit(:username, :content)
+    params.require(:comment).permit( :content)
   end
 end
